@@ -1,0 +1,23 @@
+{
+  "name": "avers-app-template",
+  "version": "0.0.1",
+  "description": "Avers App Template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wereHamster/avers-app-template.git"
+  },
+  "author": "Tomas Carnecky <tomas.carnecky@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wereHamster/avers-app-template/issues"
+  },
+  "homepage": "https://github.com/wereHamster/avers-app-template#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-tslint": "^3.1.1-beta",
+    "gulp-typescript": "^2.8.0",
+    "typescript": "^1.5.3"
+  }
+}
