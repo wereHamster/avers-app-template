@@ -1,28 +1,20 @@
+/// <reference path="./env/config.d.ts" />
+
 import * as Avers from './lib/avers';
 import {Account} from './storage';
 
 
+
 export class App {
     constructor
-      ( public data : Data
+      ( public data     : Data
+      , public mkViewFn : (app: App) => any
       ) {}
 }
 
-const infoTable = new Map<string, Avers.ObjectConstructor<any>>();
+
+export const infoTable = new Map<string, Avers.ObjectConstructor<any>>();
 infoTable.set('account', Account);
-
-export function mkApp(): App {
-    let aversH = new Avers.Handle
-        ( '//localhost:8080/'
-        , (<any>window).fetch.bind(window)
-        , window.performance.now.bind(window.performance)
-        , infoTable
-        );
-
-    let data = new Data(aversH);
-
-    return new App(data);
-}
 
 
 
@@ -43,8 +35,13 @@ export class Data {
 }
 
 
-export function refresh(app: App): void {
+export function
+refresh(app: App): void {
+    React.render(app.mkViewFn(app), document.body);
 }
 
-export function loadView(app: App, mkViewFn: () => any): void {
+export function
+loadView(app: App, mkViewFn: (app: App) => React.ReactElement<any>): void {
+    app.mkViewFn = mkViewFn;
+    refresh(app);
 }

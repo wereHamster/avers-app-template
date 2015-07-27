@@ -1,7 +1,24 @@
 import * as Avers from './lib/avers';
-import {App, mkApp, refresh, loadView} from './app';
-import {indexView} from './views';
+import {Data, App, infoTable, refresh, loadView} from './app';
+import {loadingView, indexView, notFoundView} from './views';
 
+
+
+function mkApp(): App {
+    let aversH = new Avers.Handle
+        ( config.apiHost
+        , (<any>window).fetch.bind(window)
+        , window.performance.now.bind(window.performance)
+        , infoTable
+        );
+
+    let data = new Data(aversH);
+
+    return new App
+        ( data
+        , loadingView
+        );
+}
 
 export default function() {
     console.info('Starting app...');
@@ -41,8 +58,18 @@ export default function() {
 declare var page;
 function setupRoutes(app: App) {
     page('/', () => {
-        loadView(app, () => {
+        loadView(app, app => {
             return indexView(app);
+        });
+    });
+
+
+    // Your router MUST have a catch-all handler, otherwise you'll get
+    // a redirect loop on the client!
+
+    page('*', () => {
+        loadView(app, app => {
+            return notFoundView(app);
         });
     });
 
