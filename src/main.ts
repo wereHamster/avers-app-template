@@ -15,7 +15,8 @@ function mkApp(): App {
     let data = new Data(aversH);
 
     return new App
-        ( data
+        ( document.getElementById('root')
+        , data
         , loadingView
         );
 }
