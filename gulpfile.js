@@ -4,9 +4,12 @@ var gulp       = require('gulp')
   , ts         = require('gulp-typescript')
   , tslint     = require('gulp-tslint')
   , babel      = require('gulp-babel')
-  , browserify = require('gulp-browserify')
   , connect    = require('gulp-connect')
+  , source     = require('vinyl-source-stream')
+  , buffer     = require('vinyl-buffer')
   , merge      = require('merge-stream')
+  , browserify = require('browserify')
+  , babelify   = require('babelify')
   ;
 
 
@@ -65,8 +68,17 @@ gulp.task('bundle', function() {
         .pipe(rename('config.js'))
         .pipe(gulp.dest('dist/bundles/'));
 
-    var main = gulp.src(['dist/js/main.js'])
-        .pipe(browserify({ paths: ['dist/js/'], transform: ['babelify'], standalone: 'main' }))
+    var browserifyConfig =
+        { entries: 'dist/js/main.js'
+        , paths: ['dist/js/']
+        , standalone: 'main'
+        };
+
+    var main = browserify(browserifyConfig)
+        .transform('babelify', { presets: ['es2015'] })
+        .bundle()
+        .pipe(source('main.js'))
+        .pipe(buffer())
         .pipe(gulp.dest('dist/bundles/'));
 
     return merge(config, main);
