@@ -63,25 +63,18 @@ gulp.task('compile:watch', function() {
 // to cater for the case when you want to do the compilation yourself.
 
 gulp.task('bundle', function() {
-    var env = util.env.env ? util.env.env : 'local';
-    var config = gulp.src('dist/js/env/' + env + '.js')
-        .pipe(rename('config.js'))
-        .pipe(gulp.dest('dist/bundles/'));
-
     var browserifyConfig =
         { entries: 'dist/js/main.js'
         , paths: ['dist/js/']
         , standalone: 'main'
         };
 
-    var main = browserify(browserifyConfig)
+    return browserify(browserifyConfig)
         .transform('babelify', { presets: ['es2015'] })
         .bundle()
         .pipe(source('main.js'))
         .pipe(buffer())
         .pipe(gulp.dest('dist/bundles/'));
-
-    return merge(config, main);
 });
 
 gulp.task('bundle:watch', function() {

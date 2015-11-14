@@ -18,8 +18,7 @@
     ],
     "files": [
         "./src/app.ts",
-        "./src/env/config.d.ts",
-        "./src/env/local.ts",
+        "./src/config.ts",
         "./src/ext/react-dom.d.ts",
         "./src/ext/react.d.ts",
         "./src/lib/avers.ts",

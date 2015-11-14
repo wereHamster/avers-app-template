@@ -1,5 +1,5 @@
 import * as Avers from './lib/avers';
-import {Data, App, infoTable, refresh, loadView} from './app';
+import {Data, App, config, infoTable, refresh, loadView} from './app';
 import {loadingView, indexView, notFoundView} from './views';
 
 
