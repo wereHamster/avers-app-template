@@ -18,7 +18,7 @@ export class Config {
 
 Avers.definePrimitive(Config, 'apiHost', '//localhost:8000');
 
-export const config = Avers.parseJSON<Config>(Config, configObject);
+export const config = Avers.mk<Config>(Config, configObject);
 
 
 
