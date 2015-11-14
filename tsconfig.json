@@ -9,7 +9,8 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "rootDir": "src/",
-        "outDir": "dist/js/"
+        "outDir": "dist/js/",
+        "jsx": "react"
     },
     "filesGlob": [
         "./src/**/*.ts",
@@ -28,7 +29,6 @@
         "./src/lib/avers/storage.ts",
         "./src/lib/computation.ts",
         "./src/main.ts",
-        "./src/storage.ts",
-        "./src/views.ts"
+        "./src/storage.ts"
     ]
 }
