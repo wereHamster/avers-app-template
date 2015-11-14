@@ -48,7 +48,7 @@ gulp.task('compile', function() {
 });
 
 gulp.task('compile:watch', function() {
-    gulp.watch('src/**/*.ts', ['compile']);
+    gulp.watch(['src/**/*.ts','src/**/*.tsx'], ['compile']);
 });
 
 
