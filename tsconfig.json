@@ -14,7 +14,7 @@
     },
     "filesGlob": [
         "./src/**/*.ts",
-        "!./node_modules/**/*"
+        "./src/**/*.tsx"
     ],
     "files": [
         "./src/app.ts",
@@ -28,6 +28,7 @@
         "./src/lib/avers/storage.ts",
         "./src/lib/computation.ts",
         "./src/main.ts",
-        "./src/storage.ts"
+        "./src/storage.ts",
+        "./src/views.tsx"
     ]
 }
