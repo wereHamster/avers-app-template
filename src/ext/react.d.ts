@@ -874,7 +874,7 @@ declare namespace __React {
     }
 }
 
-declare var React: typeof __React;
+import React = __React;
 declare module "react" {
     export = __React;
 }

@@ -56,7 +56,7 @@ declare namespace __React {
     }
 }
 
-declare var ReactDOM: typeof __React.__DOM;
+import ReactDOM = __React.__DOM;
 declare module "react-dom" {
     import DOM = __React.__DOM;
     export = DOM;
