@@ -34,10 +34,17 @@ export class App {
 }
 
 
+
+// -----------------------------------------------------------------------------
+// Avers InfoTable
+
 export const infoTable = new Map<string, Avers.ObjectConstructor<any>>();
 infoTable.set('account', Account);
 
 
+
+// -----------------------------------------------------------------------------
+// Data
 
 export class Data {
 
