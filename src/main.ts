@@ -1,6 +1,7 @@
 import * as Avers from './lib/avers';
 import {Data, App, config, infoTable, refresh, loadView} from './app';
 import {loadingView, indexView, notFoundView} from './views';
+import {Handle, DocumentEmitter} from "inline-style-emitter";
 
 
 
@@ -16,6 +17,7 @@ function mkApp(): App {
 
     return new App
         ( document.getElementById('root')
+        , new Handle(new DocumentEmitter(document))
         , data
         , loadingView
         );
