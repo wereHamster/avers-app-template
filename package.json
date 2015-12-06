@@ -20,11 +20,12 @@
     "gulp-babel": "^6.1.0",
     "gulp-connect": "^2.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-tslint": "^3.1.1-beta",
+    "gulp-tslint": "^4.1.1",
     "gulp-typescript": "^2.8.0",
     "gulp-util": "^3.0.6",
     "inline-style-emitter": "0.0.2",
     "merge-stream": "^1.0.0",
+    "tslint": "^3.1.1",
     "typescript": "^1.6.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
