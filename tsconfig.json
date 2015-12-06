@@ -22,12 +22,6 @@
         "./src/config.ts",
         "./src/ext/react-dom.d.ts",
         "./src/ext/react.d.ts",
-        "./src/lib/avers.ts",
-        "./src/lib/avers/core.ts",
-        "./src/lib/avers/session.ts",
-        "./src/lib/avers/shared.ts",
-        "./src/lib/avers/storage.ts",
-        "./src/lib/computation.ts",
         "./src/main.ts",
         "./src/storage.ts",
         "./src/views.tsx"

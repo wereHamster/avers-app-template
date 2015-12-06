@@ -1,4 +1,4 @@
-import * as Avers from './lib/avers';
+import * as Avers from 'avers';
 import {Data, App, config, infoTable, loadView} from './app';
 import {loadingView, indexView, notFoundView} from './views';
 import {Handle, DocumentEmitter, processStyleProperties} from "inline-style-emitter";
