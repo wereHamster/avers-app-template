@@ -1,7 +1,7 @@
 import * as Avers from './lib/avers';
-import {Data, App, config, infoTable, refresh, loadView} from './app';
+import {Data, App, config, infoTable, loadView} from './app';
 import {loadingView, indexView, notFoundView} from './views';
-import {Handle, DocumentEmitter} from "inline-style-emitter";
+import {Handle, DocumentEmitter, processStyleProperties} from "inline-style-emitter";
 
 
 
@@ -16,15 +16,20 @@ function mkApp(): App {
     let data = new Data(aversH);
 
     return new App
-        ( document.getElementById('root')
-        , new Handle(new DocumentEmitter(document))
-        , data
+        ( data
         , loadingView
         );
 }
 
 export default function() {
     console.info('Starting app...');
+
+    // References to the DOM resources which we'll be using to show the
+    // application. One is the container element where we render the React
+    // virtual DOM into, the other is a handle to the stylesheet object into
+    // which we'll insert CSS rules.
+    let containerElement = document.getElementById('root')
+      , styleEmitterH    = new Handle(new DocumentEmitter(document));
 
     // Create the application instance. Pass all required configuration to the
     // constructor.
@@ -36,7 +41,9 @@ export default function() {
     // data changes.
     Avers.attachGenerationListener(app.data.aversH, () => {
         console.info('Generation', app.data.aversH.generationNumber);
-        refresh(app);
+
+        let rootReactElement = processStyleProperties(styleEmitterH, React, app.mkViewFn(app));
+        ReactDOM.render(rootReactElement, containerElement);
     });
 
     // This template uses page.js for the router. If you target modern browsers

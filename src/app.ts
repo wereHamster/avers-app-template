@@ -4,7 +4,6 @@
 import * as Avers from './lib/avers';
 import {Account} from './storage';
 import configObject from './config';
-import {Handle, processStyleProperties} from "inline-style-emitter";
 
 
 
@@ -28,10 +27,8 @@ export const config = Avers.mk<Config>(Config, configObject);
 
 export class App {
     constructor
-      ( public containerElement : Element
-      , public styleEmitterH    : Handle
-      , public data             : Data
-      , public mkViewFn         : (app: App) => any
+      ( public data     : Data
+      , public mkViewFn : (app: App) => any
       ) {}
 }
 
@@ -65,13 +62,7 @@ export class Data {
 }
 
 export function
-refresh(app: App): void {
-    let rootReactElement = processStyleProperties(app.styleEmitterH, React, app.mkViewFn(app));
-    ReactDOM.render(rootReactElement, app.containerElement);
-}
-
-export function
 loadView(app: App, mkViewFn: (app: App) => React.ReactElement<any>): void {
     app.mkViewFn = mkViewFn;
-    refresh(app);
+    Avers.startNextGeneration(app.data.aversH);
 }
