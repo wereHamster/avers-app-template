@@ -5,3 +5,4 @@ cd "$(dirname "$0")/.."
 
 
 npm install -s
+./node_modules/.bin/tsd reinstall --clean --overwrite
