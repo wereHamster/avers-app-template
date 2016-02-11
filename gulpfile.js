@@ -42,13 +42,13 @@ gulp.task('lint', function() {
 // immediately upon save.
 
 gulp.task('compile', function() {
-    return gulp.src(['src/**/*.ts', 'src/**/*.tsx'])
+    return gulp.src(app.config.files)
         .pipe(ts(app)).js
         .pipe(gulp.dest('dist/js/'));
 });
 
 gulp.task('compile:watch', function() {
-    gulp.watch(['src/**/*.ts','src/**/*.tsx'], ['compile']);
+    gulp.watch(app.config.files, ['compile']);
 });
 
 

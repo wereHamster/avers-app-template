@@ -1,5 +1,3 @@
-/// <reference path="./ext/react.d.ts" />
-
 import {App} from './app';
 
 

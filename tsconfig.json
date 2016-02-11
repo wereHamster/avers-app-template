@@ -14,14 +14,14 @@
         "jsx": "react"
     },
     "filesGlob": [
+        "./typings/tsd.d.ts",
         "./src/**/*.ts",
         "./src/**/*.tsx"
     ],
     "files": [
+        "./typings/tsd.d.ts",
         "./src/app.ts",
         "./src/config.ts",
-        "./src/ext/react-dom.d.ts",
-        "./src/ext/react.d.ts",
         "./src/main.ts",
         "./src/storage.ts",
         "./src/views.tsx"
